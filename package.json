@@ -1,0 +1,75 @@
+{
+  "name": "@fimbul-works/bundle-size",
+  "description": "A micro-library for calculating bundle sizes with minification and compression support",
+  "version": "0.1.0",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "author": "FimbulWorks <contact@fimbul.works>",
+  "homepage": "https://github.com/fimbul-works/bundle-size#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fimbul-works/bundle-size.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fimbul-works/bundle-size/issues"
+  },
+  "keywords": [
+    "bundle",
+    "bundle-size",
+    "bundlesize",
+    "minify",
+    "gzip",
+    "brotli",
+    "compression",
+    "size",
+    "build",
+    "cli",
+    "reporter",
+    "metrics",
+    "esbuild",
+    "rollup",
+    "vite",
+    "performance",
+    "javascript",
+    "typescript"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "bundle-size": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc --build --clean && tsc",
+    "format": "npx @biomejs/biome format --write src",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "dependencies": {
+    "bytes": "^3.1.2",
+    "fast-glob": "^3.3.3",
+    "picocolors": "^1.1.1",
+    "terser": "^5.47.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
+    "@types/bytes": "^3.1.5",
+    "@types/node": "^25.8.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
+}
