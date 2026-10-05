@@ -1,4 +1,7 @@
 {
+  "files": {
+    "includes": ["**", "!**/node_modules", "!**/dist"]
+  },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2,
@@ -7,25 +10,8 @@
   },
   "linter": {
     "rules": {
-      "style": {
-        "noNonNullAssertion": "off"
-      },
-      "complexity": {
-        "noForEach": "off",
-        "noCommaOperator": "off"
-      },
       "suspicious": {
-        "noAssignInExpressions": "off",
-        "noExplicitAny": "off",
-        "useIterableCallbackReturn": "off",
-        "noConfusingVoidType": "off",
-        "noAsyncPromiseExecutor": "off"
-      },
-      "correctness": {
-        "noVoidTypeReturn": "off",
-        "noConstructorReturn": "off",
-        "noUnknownMediaFeatureName": "off",
-        "noUnknownPseudoElement": "off"
+        "useIterableCallbackReturn": "off"
       }
     }
   }

@@ -42,7 +42,40 @@ async function findConfig() {
 
 async function run() {
   const args = process.argv.slice(2);
-  const customConfigPath = args[0];
+  let customConfigPath: string | undefined;
+  let cliJsonOption: string | boolean | undefined;
+  let cliMinifierOption: "terser" | "esbuild" | undefined;
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === "--json" || arg === "-j") {
+      const next = args[i + 1];
+      if (next && !next.startsWith("-")) {
+        cliJsonOption = next;
+        i++;
+      } else {
+        cliJsonOption = true;
+      }
+    } else if (arg === "--minifier" || arg === "-m") {
+      const next = args[i + 1];
+      if (next === "terser" || next === "esbuild") {
+        cliMinifierOption = next;
+        i++;
+      }
+    } else if (arg === "--esbuild") {
+      cliMinifierOption = "esbuild";
+    } else if (arg === "--terser") {
+      cliMinifierOption = "terser";
+    } else if (arg === "--config" || arg === "-c") {
+      const next = args[i + 1];
+      if (next) {
+        customConfigPath = next;
+        i++;
+      }
+    } else if (!arg.startsWith("-") && !customConfigPath) {
+      customConfigPath = arg;
+    }
+  }
 
   let config: BundleSizeOptions;
 
@@ -67,6 +100,14 @@ async function run() {
       pc.red("Error: No configuration found. Create a bundle-size.config.ts/js/json or provide a path as an argument."),
     );
     process.exit(1);
+  }
+
+  if (cliJsonOption !== undefined) {
+    config.json = cliJsonOption;
+  }
+
+  if (cliMinifierOption !== undefined) {
+    config.minifier = cliMinifierOption;
   }
 
   try {

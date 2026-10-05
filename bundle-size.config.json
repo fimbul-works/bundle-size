@@ -1,11 +1,8 @@
 {
   "groups": [
     {
-      "name": "Bundle",
       "include": "dist/**/*.js",
-      "exclude": [
-        "dist/**/*.d.ts"
-      ]
+      "exclude": ["dist/**/*.d.ts"]
     }
   ],
   "minify": true

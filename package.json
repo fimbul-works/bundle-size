@@ -1,7 +1,7 @@
 {
   "name": "@fimbul-works/bundle-size",
   "description": "A micro-library for calculating bundle sizes with minification and compression support",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "private": false,
   "license": "MIT",
@@ -18,18 +18,24 @@
     "bundle",
     "bundle-size",
     "bundlesize",
+    "size",
+    "size-limit",
+    "analyzer",
     "minify",
+    "terser",
+    "esbuild",
     "gzip",
     "brotli",
     "compression",
-    "size",
-    "build",
-    "cli",
-    "reporter",
     "metrics",
-    "esbuild",
-    "rollup",
+    "benchmark",
+    "reporter",
+    "cli",
+    "ci",
+    "json",
     "vite",
+    "rollup",
+    "build",
     "performance",
     "javascript",
     "typescript"
@@ -46,23 +52,30 @@
   },
   "scripts": {
     "build": "tsc --build --clean && tsc",
-    "format": "npx @biomejs/biome format --write src",
+    "format": "npx @biomejs/biome format --write",
     "prepublishOnly": "npm run build"
   },
   "exports": {
     ".": "./dist/index.js"
   },
   "dependencies": {
-    "bytes": "^3.1.2",
     "fast-glob": "^3.3.3",
     "picocolors": "^1.1.1",
-    "terser": "^5.48.0"
+    "terser": "^5.51.2"
+  },
+  "peerDependencies": {
+    "esbuild": ">=0.18.0"
+  },
+  "peerDependenciesMeta": {
+    "esbuild": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.16",
-    "@types/bytes": "^3.1.5",
-    "@types/node": "^25.9.1",
-    "typescript": "^6.0.3"
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^26.6.4",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=20.0.0"
